@@ -2,9 +2,7 @@ version: '3'
 services:
   gateway:
     build: ./gateway
-    hostname: gateway
-    env_file:
-      - .env
+    container_name: gateway
     ports:
       - "8000:8000"
     networks:
@@ -12,14 +10,12 @@ services:
       - frontend
   auth:
     build: ./auth
-    hostname: auth
-    env_file:
-      - .env
+    container_name: auth
     networks:
       - backend
   nats:
     build: ./nats
-    hostname: nats
+    container_name: nats
     command: "--cluster_name NATS --cluster nats://localhost:6222 --http_port 8002 --port 4222 --config /etc/nats/nats-server.conf"
     ports:
       - 8002:8002

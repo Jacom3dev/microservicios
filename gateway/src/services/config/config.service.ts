@@ -7,10 +7,10 @@ export class ConfigService {
   constructor() {
     this.envConfig = {};
     
-    this.envConfig.port=5000 /* process.env.PORT */;
+    this.envConfig.port= process.env.PORT;
     this.envConfig.apiService = {
       options: {
-        servers: ["0.0.0.0:4222"/* process.env.NATS_SERVER */],
+        servers: [process.env.NATS_SERVER],
       },
       transport: Transport.NATS,
     };
